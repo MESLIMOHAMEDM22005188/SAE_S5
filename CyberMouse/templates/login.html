@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - CyberMouse</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}"> <!-- Favicon -->
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="imageAcceuil">
+                <img src="{% static 'images/logo.png' %}" alt="Logo de CyberMouse">
+            </div>
+            <div class="texteAcceuil">
+                <h1>Bienvenue sur CyberMouse</h1>
+                <h2>Explorez et apprenez la cybersécurité en jouant !</h2>
+            </div>
+        </div>
+        <div class="chupa rectangle">
+            <div class="titre">
+                <h2>CONNEXION</h2>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="username">
+                    <label for="username">Nom d'utilisateur </label>
+                </div>
+                <div class="username-label">
+                    <input type="text" id="username" name="username" required>
+                </div>
+                    <div class="username-label">
+                <div class="password">
+                    <label for="password">Mot de passe</label>
+                </div>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Se connecter</button>
+            </form>
+            <p>Pas encore de compte ? <a href="{% url 'signup' %}">Inscrivez-vous</a></p>
+            <p>Mot de passe oublié ? <a href="{% url 'resetPassword' %}">Changer de mot de passe</a></p>
+        </div>
+    </div>
+</body>
+</html>
