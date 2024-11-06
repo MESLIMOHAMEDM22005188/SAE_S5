@@ -26,6 +26,7 @@ class LoginView(View):
                 Nom ou id invalide
         return render(request,'login.html', {'form': form})
 """
+
 class SignupView(View):
     def get(self, request):
         # form = UserRegistrationForm()
