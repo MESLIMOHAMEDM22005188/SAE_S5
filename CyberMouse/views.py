@@ -1,9 +1,19 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import TemplateView
-
-
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 class LoginView(View):
+
+    def login_view(request):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponse("Connexion reussite")
+        else:
+            return HttpResponse("ECHEC DE CO  ! ")
     def get(self, request):
         return render(request, 'login.html')
 """
@@ -21,17 +31,19 @@ class LoginView(View):
                     message.succes(request, f'Bienvenue, {username} !)
                     return redirect('home')
                 else: 
-                    message.error(request, "compte pas encore actvié)
+                    message.error(request, "compte pas encore active")
             else:
                 Nom ou id invalide
         return render(request,'login.html', {'form': form})
+        
+        
 """
+
 
 class SignupView(View):
     def get(self, request):
         # form = UserRegistrationForm()
         return render(request, 'signup.html')
-
     """
         def post(self, request):
             form = UserResistrationForm(request.POST)
