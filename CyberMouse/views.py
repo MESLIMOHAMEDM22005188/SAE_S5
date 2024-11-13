@@ -68,6 +68,10 @@ class SignupView(View):
 class HomeView(TemplateView):
     template_name = 'home.html'
 
+class LevelOneView(View):
+    def get(self, request):
+        return render(request, 'levelOne.html')
+
 class ResetPasswordView(View):
     def get(self, request):
         return render(request, 'resetPassword.html')

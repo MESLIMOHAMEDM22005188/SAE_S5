@@ -60,7 +60,6 @@ color: white;
 .password {
     font-size: 1.5em;
 }
-}
 input:focus + .label-username {
     color: blue;
 }
